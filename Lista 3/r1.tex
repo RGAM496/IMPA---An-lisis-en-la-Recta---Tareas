@@ -1,0 +1,55 @@
+%!TEX root = lista3.tex
+
+{
+	\DeclareDocumentCommand \ndlimitegenerico {m m m m} {
+		#1_{{#2} \to {#3}} {#4}
+		}
+	\DeclareDocumentCommand \ndlimite {m O{\pinf} m} {
+		\ndlimitegenerico{\lim}{#1}{#2}{#3}
+		}
+
+	\hfill
+
+	\begin{enumerate}[a)]
+
+	\item
+
+		Dada la sucesión $(x_n)$, sea $ A = \set{a\in\R | a = \ndlimite{n_k}{x_{n_k}}} $ el conjunto de los valores de adherencia de $(x_n)$.
+
+		Si $a\in \cierre{A}$, existe una sucesión $(a_n)$, con $a_n\in A\ \forall n\in\N$ tal que $\limite{n}{a_n} = a$. Por definición, $\forall\varepsilon>0\ \exists n_1\in\N; n>n_1\Rightarrow |a_n-a| < \frac{\varepsilon}{2}$.
+
+		Tomando $n>n_1$, $a_n = \limite{n_k}{x_{n_k}}$ para alguna subsucesión $(x_{n_k})$ porque $a_n\in A$. Luego $\forall\varepsilon>0\ \exists n_2\in\N; n_k>n_2 \Rightarrow |x_{n_k}-a_n| < \frac{\varepsilon}{2}$.
+
+		Para $n_0 = \max\set{n_1,n_2}$ se obtiene $\forall\varepsilon > 0\ \exists n_0\in\N; n,n_k > n_0 \Rightarrow |a_n-a| < \frac{\varepsilon}{2} \wedge |x_{n_k}-a_n| < \frac{\varepsilon}{2}$.
+		Luego, $ |x_{n_k}-a| = |(x_{n_k}-a_n)+(a_n-a)| \leq |x_{n_k}-a_n| + |a_n-a| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} < \varepsilon $, lo cual concluye que $a = \limite{n_k}{x_n}$ y $a\in A$. Por tanto, $A$ es cerrado.
+
+	\item
+
+		Sea $X$ un conjunto numerable denso en $F$. Esto es, $X\subset F\subset\cierre{X}$. $X\subset F$ implica $\cierre{X}\subset\cierre{F} = F \Rightarrow F = \cierre{X}$.
+		Siendo $X = \set{x_1,x_2,\ldots,x_n,\ldots}$, se puede construir $(y_n)$ del siguiente modo:
+		$$
+			y_{n(n+1)/2+r} = \left\{
+			\begin{aligned}
+				x_n &\text{ si } r=0 \\
+				x_r &\text{ si } 0<r<n
+			\end{aligned}
+			\right.
+		$$
+
+		Abajo se ilustra la forma que adopta la sucesión.
+		\begin{align*}
+			y_1 &= x_1 \\
+			y_2 &= x_1 & y_3 &= x_2 \\
+			y_4 &= x_1 & y_5 &= x_2 & y_6 &= x_3 \\
+			    &\vdots & &\vdots & &\vdots & &\ddots
+		\end{align*}
+
+		Dada una sucesión $(z_n)$ de elementos de $X$, es posible construir una subsucesión $(y_{n_k}) = (z_n)$.
+		Si $z_m = x_r$, se toma $y_{n(n+1)/2+r}$, con $r<n$.
+		Además, se tiene en cuenta que si $z_{m_1}=y_{n_1(n_1+1)/2+r_1}$ y $z_{m_2}=y_{n_2(n_2+1)/2+r_2}$, debe tomarse $n_2>n_1$.
+
+		Luego, el conjunto de valores de adherencia de $(y_n)$ es $\cierre{X} = F$.
+	
+	\end{enumerate}
+
+}

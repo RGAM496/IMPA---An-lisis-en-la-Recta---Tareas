@@ -1,0 +1,30 @@
+%!TEX root = lista3.tex
+
+{
+	El problema se puede dividir en dos partes: demostrar que $f$ está acotada superiormente y que el supremo de $f$ está en $f(K)$.
+	Para ambas partes, se trabajará con una estrategia muy similar, así que se abordará de forma general para luego adaptar a cada subproblema.
+
+	Sea $y = \limite{n}{y_n}$, $y_n\in f(K)$ (se admitirá la posibilidad de que $y=\pinf$ para generalizar la estrategia).
+	Para cada $y_n$, existe $x_n$ tal que $f(x_n) = y_n$.
+	Como $K$ es compacto, se puede obtener una subsecuencia convergente $(x_{n_k})$ (sea $a = \limite{n_k}{x_{n_k}}$).
+	Es sabido que $\limite{n}{y_{n_k}} = \limite{n}{y_n} = y$.
+
+	Teniendo en cuenta que
+	$\forall\varepsilon>0\ \exists\delta>0; x\in\openci{a}{\delta}\Rightarrow f(x)<f(a)+\varepsilon$ y
+	$\forall\delta>0\ \exists n_0\in\N; n_k > n_0 \Rightarrow x_{n_k}\in\openci{a}{\delta}$, se deduce que
+	\begin{align*} \label{rel:magica}
+		\forall\varepsilon>0\ \exists n_0\in\N; n_k>n_0 \Rightarrow f(x_{n_k}) < f(a) + \varepsilon \Rightarrow y_{n_k} < f(a) + \varepsilon .
+	\end{align*}
+
+	Se procederá ahora a demostrar que $f$ está acotada superiormente. Supóngase por absurdo que no es así. Luego, se puede construir una sucesión $(y_n)$ tal que $\limite{n}{y_n} = \pinf$ (basta tomar $y_n>n\ \forall n\in\N$).
+	Luego, procediendo como se describió anteriormente, se obtiene que, para cualquier $\varepsilon>0$, existen $(x_{n_k})$, $(y_{n_k})$ y $n_0\in\N$ tales que $f(x_{n_k}) = y_{n_k}\ \forall n_k\in\N$, $a = \limite{n}{x_{n_k}}$ y $n_k>n_0\Rightarrow y_{n_k} < f(a)+\varepsilon$.
+	Esto lleva rápidamente a una contradicción, pues debería existir $y_{n_k} > f(a)+\varepsilon$, por tanto, $f$ está acotada.
+
+	Para demostrar que el supremo $s$ de $f$ pertenece a $f(K)$, téngase en cuenta que existe una secuencia $(y_n)$ en $f(K)$ tal que $s = \limite{n}{y_n}$.
+	Procediendo del mismo modo mencionado anteriormente, se obtiene que para cualquier $\varepsilon>0$ existen $(x_{n_k})$, $(y_{n_k})$ y $n_1\in\N$ tales que $f(x_{n_k}) = y_{n_k}\ \forall n_k\in\N$, $a = \limite{n}{x_{n_k}}$ y $n_k>n_1\Rightarrow y_{n_k} < f(a)+\frac{\varepsilon}{2}$.
+	Como $s = \limite{n}{y_{n_k}}$, $\exists n_2\in\N; n_k>n_2 \Rightarrow s-\frac{\varepsilon}{2}<y_{n_k}<s+\frac{\varepsilon}{2}$.
+	Luego, $s-\frac{\varepsilon}{2}<f(a)+\frac{\varepsilon}{2} \Rightarrow s < f(a) + \varepsilon\ \forall\varepsilon>0$.
+	
+	$f(a) \leq s$ por ser el supremo. Si $f(a)<s$, entonces existe $\varepsilon>0$ tal que $f(a)+\varepsilon<s$ (se elige $0<\varepsilon<s-f(a)$), lo cual contradice lo dicho anteriormente.
+	Por tanto, $s = f(a) \in f(K)$.
+}

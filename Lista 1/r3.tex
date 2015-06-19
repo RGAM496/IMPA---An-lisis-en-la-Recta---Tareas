@@ -1,0 +1,19 @@
+%!TEX root = lista1.tex
+
+Si $x_1=\ldots=x_n$, $G = \sqrt[n]{x^n}=x$ y $A = nx/n=x$. Luego, $G=A$.
+
+Sea $X = \set{x_1,\ldots,x_n} \subset\R^+$ Elegimos $x_i=\min X$ y $x_j=\max X$.
+Sustituyéndolos por $x'_i = \frac{x_i\cdot x_j}{G}$ y $x'_j = G$, observamos que $x'_i x'_j = x_i x_j / G \cdot G = x_i x_j$.
+Además, $x_i \leq G = x'_j \leq x_j$ (si $G < x_i$, ambas medias serían menores que $G$, y si $G > x_j$, ambas serían mayores que $G$).
+Como $x_i \leq x_i\cdot\frac{x_j}{G}$ y $\frac{x_i}{G}\cdot x_j \leq x_j$, entonces $x_i \leq x'_i \leq x_j$.
+
+Dados $a \leq a', b' \leq b$ tales que $ab=a'b'$, se sabe que $\sqrt{a} \leq \sqrt{a'}, \sqrt{b'} \leq \sqrt{b}$. Luego:
+$$ |\sqrt{b}-\sqrt{a}| \geq |\sqrt{b'}-\sqrt{a'}| \Rightarrow (\sqrt{b}-\sqrt{a})^2 \geq (\sqrt{b'}-\sqrt{a'})^2 \Rightarrow b + a \geq b' + a' $$
+Reemplazando $a = x_i, b = x_j, a' = x'_i, b' = x'_j$, se concluye que $x'_i+x'_j\leq x_i+x_j$.
+Esto significa que, al efectuar la sustitución, $G'=G$ y $A'\leq A$, donde $G'$ y $A'$ son los nuevos valores de la media geométrica y la aritmética, después de efectuar la sustitución.
+
+Para la siguiente iteración, diremos que $x'_j = G$ no se puede elegir (ni como $x_i$ ni como $x_j$). Será posible hallar un nuevo par $x_i,x_j$, pues $\sqrt[n]{x_1\ldots x_n} = G$. Entonces, en cada iteración, nos aseguramos de que un elemento es reemplazado por $G$.
+
+Después de $n-2$ iteraciones, tenemos $n-2$ términos iguales a $G$. Sin pérdida de generalidad, digamos que la sucesión es de la forma $x_1,x_2$ y $x_i=G\ \forall i\in\N; 2<i\leq n$. Por las deducciones anteriores, sabemos que $\set{x_i,x_j} = \set{x_1,x_2}$. $G = \sqrt[n]{x_1x_2G^{n-2}} \Rightarrow G^n = x_1x_2G^{n-2} \Rightarrow x_1x_2 = G^2$. Efectuando el reemplazo, $x'_1 = x_1x_2/G = G^2/G = G$ y $x'_2 = G$ y la nueva sucesión es $x_i = G\ \forall i\in\N; 1\leq i\leq n$, donde $G = A$.
+
+Como $A$ nunca aumentó en cada iteración, concluimos que $G\leq A$.

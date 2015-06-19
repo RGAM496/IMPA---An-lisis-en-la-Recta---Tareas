@@ -1,0 +1,49 @@
+%!TEX root = lista3.tex
+
+{
+	Primero, demostraremos que $f(x) = |x-y|$ para algún $y\in F$.
+	Para ello, basta demostrar que, dado $x\in\R$, $D_x = \set{|x-y|, y\in F}$ es cerrado (en todo conjunto cerrado y acotado inferiormente, el ínfimo es un elemento del conjunto, y 0 es una cota inferior de $D_x$).
+	Lo haremos en dos pasos:
+
+	\begin{enumerate}
+		
+		\item 
+
+			Si $F=\cierre{F}$, entonces, dado $c\in\R$, $G=\set{c-y,y\in F}$ es cerrado.
+
+			En efecto, sea $z\in\cierre{G}$, esto es, existe $(z_n)$ en $G$ tal que $z = \limite{n}{z_n}$.
+			Sea $(y_n)$ en $F$ tal que $z_n = c - y_n \forall n\in\N$.
+			Luego, $z = \limite{n}{\left(c-y_n\right)} = \limite{n}{c} - \limite{n}{y_n} = c - \limite{n}{y_n} \Rightarrow \limite{n}{y_n} = c - z \in F$.
+			Por último, $z = c - (c-z) \in G \Rightarrow G = \cierre{G}$.
+
+		\item
+
+			Si $F=\cierre{F}$, entonces $G = \set{|y|, y\in F}$ es cerrado.
+
+			$z\in\cierre{G} \Rightarrow z = \limite{n}{z_n}$ para alguna secuencia $(z_n)\in G$.
+			Entonces, $z=\limite{n}{z_{n_k}}$ para cualquier subsecuencia $(z_{n_k})$.
+			Sea $(y_n)$ en $F$ tal que $|y_n|=z_n \forall n\in\N$.
+			Como $y_n$ es una secuencia infinita, existe en ella infinitos elementos positivos o infinitos elementos negativos; esto es, puedo construir una subsecuencia $(y_{n_k})$ tal que $y_{n_k} = z_{n_k}\forall n\in\N$ o $y_{n_k} = - z_{n_k}\forall n\in\N$.
+			Podemos generalizar diciendo que $z_{n_k} = \epsilon y_{n_k} \forall n\in\N$, con $\epsilon\in\set{-1;1}$ (téngase en cuenta que $\epsilon^{-1} = \epsilon$ y que $|\epsilon| = 1$).
+
+			Así, $z = \limite{n}{z_{n_k}} = \limite{n}{\epsilon y_{n_k}} = \epsilon\limite{n}{y_{n_k}} \Rightarrow \limite{n}{y_{n_k}} = \epsilon z \in F$.
+			Luego, $|z| = |\epsilon|\cdot|z| = |\epsilon z| \in G$, por tanto, $G=\cierre{G}$.
+
+	\end{enumerate}
+
+	Entonces, dados $x_1,x_2\in\R$, existen $y_1,y_2\in F$ tales que $f(x_1) = |x_1-y_1|$ y $f(x_2) = |x_2-y_2|$.
+	Como $f(x_1) = \inf D_{x_1}$ y $f(x_2) = \inf D_{x_2}$, es inmediato que $|x_1-y_1| \leq |x_1-y_2|$ y $|x_2-y_2| \leq |x_2-y_1|$.
+	Luego:
+	\begin{align*}
+		f(x_1)-f(x_2) &= |x_1-y_1|-|x_2-y_2| \leq |x_1-y_2|-|x_2-y_2| \leq |x_1-x_2| \\
+		f(x_2)-f(x_1) &= |x_2-y_2|-|x_1-y_1| \leq |x_2-y_1|-|x_1-y_1| \leq |x_2-x_1|
+	\end{align*}
+
+	De las dos desigualdades, es inmediato que $|f(x_1)-f(x_2)| \leq |x_1-x_2|$.
+	Luego, dado $\varepsilon>0$, tomando $|x_1-x_2|<\varepsilon$, deducimos $|f(x_1)-f(x_2)|<\varepsilon$, lo cual demuestra que $f$ es uniformemente continua (y por supuesto, es continua).
+
+	Para concluir, sea $x$ tal que $f(x)=0$.
+	Sabemos que existe $y\in F$ tal que $f(x)=|x-y|$.
+	Luego, $|x-y|=0 \Rightarrow x=y \Rightarrow x\in F$.
+	Además, evidentemente, si $x\in F \Rightarrow f(x)=|x-x|=0$, por tanto, $\set{x\in\R,f(x)=0} = F$.
+}

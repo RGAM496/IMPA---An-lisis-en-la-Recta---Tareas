@@ -1,0 +1,15 @@
+%!TEX root = lista2.tex
+
+Sea $A = \bigcup_{\lambda\in L} A_\lambda$ tal que $A_\lambda = \interior (A_\lambda)\ \forall \lambda\in L$ y $X\subset A$ ($A$ es un recubrimiento de $X$).
+\begin{align*}
+	x\in X
+	\Rightarrow \exists \lambda\in L; x\in A_\lambda = \interior(A_\lambda)
+	\Rightarrow \exists \varepsilon > 0; (x-\varepsilon,x+\varepsilon) \subset A_\lambda
+\end{align*}
+
+Luego, sean $p_x,q_x\in\Q$ tales que $(p_x,q_x) \subset (x-\varepsilon,x+\varepsilon)$.
+Así, podemos definir $B = \set{\langle p_x,q_x \rangle | x\in X}$.
+De $B\subset \Q^2$ se deduce que $B$ es numerable.
+
+Definimos ahora $f:B\to A$ tal que $f(\langle p_x,q_x \rangle) = A_\lambda$ si $x\in A_\lambda$ (en caso de que más de un $A_\lambda$ cumpla la condición, se elegirá uno de ellos arbitrariamente).
+Inmediatamente concluimos que $f(B)$ es un subrecubrimiento numerable de $X$.

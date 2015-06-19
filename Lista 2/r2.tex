@@ -1,0 +1,62 @@
+%!TEX root = lista2.tex
+
+{
+	\newcommand{\openci}[2]{\left(#1-#2,#1+#2\right)}
+	Para ambas partes, tendremos en cuenta que $\exists s\in\R; s=\sum_{n=1}^{\infty}{a_n}$. Luego, $r_n = s - s_{n-1}$ y
+	$$
+		\limite{n}{r_n} = \limite{n}{s-s_n} = \limite{n}{s} - \limite{n}{s_n} = s-s = 0
+	.$$
+	Además, $r_n-r_{n+1} = a_n > 0 \Rightarrow r_n > r_{n+1}\ \forall n\in\N$. También, $r_n = a_n + a_{n+1} + \ldots > a_n$.
+
+	\begin{enumerate}[a)]
+
+		\item
+			\begin{align*}
+				\sum_{i=m}^{n}{\frac{a_i}{r_i}}
+				&= \sum_{i=m}^{n}{\frac{r_i-r_{i+1}}{r_i}}
+				> \sum_{i=m}^{n}{\frac{r_i-r_{i+1}}{r_m}}
+				= \frac{r_m-r_{n+1}}{r_m}
+				= 1 - \frac{r_{n+1}}{r_m}
+				> 1 - \frac{r_n}{r_m}
+			\end{align*}
+
+			Luego:
+			\begin{align*}
+				\sum_{i=m}^{\infty}{\frac{a_i}{r_i}}
+				&= \limite{n}{\sum_{i=m}^{n}{\frac{a_i}{r_i}}}
+				= \limite{n}{\left(1-\frac{r_n}{r_m}\right)}
+				= 1
+			\end{align*}
+
+			Esto significa que para cualquier $\varepsilon > 0\ \exists n_0\in\N; n>n_0 \Rightarrow \sum_{i=m_0}^{n}{\frac{a_i}{r_i}} \in\openci{1}{\varepsilon}$.
+			Para todo $k\in\N$, tomamos $m_k = n_{k-1} + 1$ y hallamos $n_k\in\N$ tal que $n>n_k \Rightarrow \sum_{i=m_k}^{n}{\frac{a_i}{r_i}} \in\openci{1}{\varepsilon}$.
+			Así, obtenemos una suma infinita de partes de la serie $\sum_{n=1}^{\infty}{a_n/r_n}$ (sin repetir elementos), y cada una de las partes es mayor a $1-\varepsilon$. Si hacemos $\varepsilon<\frac{1}{2}$ tenemos una suma infinita de expresiones mayores a $\frac{1}{2}$, la cual diverge.
+			Con esto se concluye que $\sum_{n=1}^{\infty}{a_n/r_n}$ diverge.
+
+		\item
+			\begin{align*}
+				\frac{a_n}{\sqrt{r_n}}
+				&= \frac{a_n(\sqrt{r_n}+\sqrt{r_{n+1}})}{\sqrt{r_n}(\sqrt{r_n}+\sqrt{r_{n+1}})}
+				= \frac{1}{\sqrt{r_n}+\sqrt{r_{n+1}}}\left( a_n + \frac{a_n\sqrt{r_{n+1}}}{\sqrt{r_n}} \right)
+				\\
+				&< \frac{2a_n}{\sqrt{r_n}+\sqrt{r_{n+1}}}
+				= \frac{2(r_n-r_{n+1})}{\sqrt{r_n}+\sqrt{r_{n+1}}}
+				= 2(\sqrt{r_n}-\sqrt{r_{n+1}})
+			\end{align*}
+
+			Si $m<n$, entonces $\sum_{i=m}^{n}\frac{a_i}{\sqrt{r_i}} < \sum_{i=m}^{n} 2(\sqrt{r_i}-\sqrt{r_{i+1}}) = 2(\sqrt{r_m}-\sqrt{r_n})$.
+			Luego:
+			\begin{align*}
+				\sum_{i=m}^{\infty}\frac{a_i}{\sqrt{r_i}}
+					&= \limite{n}{\sum_{i=m}^{n}\frac{a_i}{\sqrt{r_i}}}
+					\leq \limite{n}{2(\sqrt{r_m}-\sqrt{r_n})}
+				\\
+				\sum_{i=m}^{\infty}\frac{a_i}{\sqrt{r_i}}
+					&\leq 2\limite{n}{\sqrt{r_m}} - 2\limite{n}{\sqrt{r_n}}
+					= 2\sqrt{r_m}
+			\end{align*}
+
+			En particular, para $m=1$, $\sum_{i=1}^{\infty}\frac{a_i}{\sqrt{r_i}} \leq 2\sqrt{r_1}$ converge.
+
+	\end{enumerate}
+}

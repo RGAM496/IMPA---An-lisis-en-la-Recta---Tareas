@@ -1,0 +1,76 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{xparse}
+
+%-------------------------------------------------------------------------------
+
+\theoremstyle{definition}
+\newtheorem{enunciado}{Enunciado}
+
+\newenvironment{ejercicio}{\begin{enunciado}}{\end{enunciado}}
+\newenvironment{solucion}{\begin{proof}[Solución]}{\end{proof}}
+
+%-------------------------------------------------------------------------------
+
+\newcommand{\N}{\mathbb{N}^*}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\cierre}[1]{\overline{#1}}
+\newcommand{\openci}[2]{\left(#1-#2,#1+#2\right)}
+\newcommand{\pinf}{+\infty}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\DeclareDocumentCommand \limitegenerico {m m m m} {
+	\displaystyle#1_{{#2} \to {#3}} {#4}
+	}
+\DeclareDocumentCommand \limite {m O{\pinf} m} {
+	\limitegenerico{\lim}{#1}{#2}{#3}
+	}
+\DeclareDocumentCommand \limitesuperior {m O{\pinf} m} {
+	\limitegenerico{\limsup}{#1}{#2}{#3}
+	}
+\DeclareDocumentCommand \limiteinferior {m O{\pinf} m} {
+	\limitegenerico{\liminf}{#1}{#2}{#3}
+	}
+
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\interior}{int}
+
+%-------------------------------------------------------------------------------
+
+\title{Problemas Resueltos}
+\author{Rafael Guillermo Arias Michel}
+\newdate{fecha}{24}{2}{2015}
+\date{\displaydate{fecha}}
+
+%-------------------------------------------------------------------------------
+
+\begin{document}
+
+	\maketitle
+
+	\begin{ejercicio}\input{e1}\end{ejercicio}
+	\begin{solucion}\input{r1}\end{solucion}
+
+	\begin{ejercicio}\input{e2}\end{ejercicio}
+	\begin{solucion}\input{r2}\end{solucion}
+
+	\begin{ejercicio}\input{e3}\end{ejercicio}
+	\begin{solucion}\input{r3}\end{solucion}
+
+	\begin{ejercicio}\input{e4}\end{ejercicio}
+	\begin{solucion}\input{r4}\end{solucion}
+
+	\begin{ejercicio}\input{e5}\end{ejercicio}
+	\begin{solucion}\input{r5}\end{solucion}
+
+\end{document}

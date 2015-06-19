@@ -1,0 +1,13 @@
+%!TEX root = lista1.tex
+
+Para demostrar la bicondicional, se considerarán los dos casos presentados a continuación.
+
+~\subparagraph{Caso 1:} $\sum a_n = s$ converge.
+
+	Como $a_n$ es decreciente, puede observarse que $2^{n-1} a_{2^n} \leq a_{2^{n-1}+1} + \ldots + a_{2^n} := b_n$. Se construye así la sucesión $(b_n)$. Es evidente que $\sum b_n = \sum a_n = s$. Como $2^na_{2^n} \leq 2b_n \forall n\in\N$, por el criterio de comparación, $\sum 2^na_{2^n}$ converge.
+
+~\subparagraph{Caso 2:} $\sum 2^na_{2^n} = t$ converge.
+
+	Obsérvese que $2^na_{2^n} \geq a_{2^n} + \ldots + a_{2^{n+1}-1} := c_n$.
+	Al construir la sucesión $(c_n)$, se observa que $\sum c_n = \sum a_n - a_1 \Rightarrow \sum a_n = \sum c_n + a_1$.
+	Como $c_n \leq 2^na_{2^n}$, por el criterio de comparación, $\sum c_n = c$ converge. Luego, $\sum a_n = c + a_1$, y también converge.

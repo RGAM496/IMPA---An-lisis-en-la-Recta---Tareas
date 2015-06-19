@@ -1,0 +1,61 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{amssymb,amsmath,amsthm}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{datetime}
+
+%-------------------------------------------------------------------------------
+
+\theoremstyle{definition}
+\newtheorem{enunciado}{Enunciado}
+
+\newenvironment{ejercicio}{\begin{enunciado}}{\end{enunciado}}
+\newenvironment{solucion}{\begin{proof}[Solución]}{\end{proof}}
+
+%-------------------------------------------------------------------------------
+
+\newcommand{\N}{\mathbb{N}^*}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\DeclareMathOperator{\card}{card}
+
+%-------------------------------------------------------------------------------
+
+\title{Lista 1}
+%\author{Rafael Guillermo Arias Michel}
+\newdate{fecha}{27}{3}{2015}
+\date{\displaydate{fecha}}
+
+%-------------------------------------------------------------------------------
+
+\begin{document}
+
+	\maketitle
+
+	\begin{ejercicio}\input{e1}\end{ejercicio}
+	% \begin{solucion}\input{r1}\end{solucion}
+
+	\begin{ejercicio}\input{e2}\end{ejercicio}
+	% \begin{solucion}\input{r2}\end{solucion}
+
+	\begin{ejercicio}\input{e3}\end{ejercicio}
+	% \begin{solucion}\input{r3}\end{solucion}
+
+	\begin{ejercicio}\input{e4}\end{ejercicio}
+	% \begin{solucion}\input{r4}\end{solucion}
+
+	\begin{ejercicio}\input{e5}\end{ejercicio}
+	% \begin{solucion}\input{r5}\end{solucion}
+
+	\begin{ejercicio}\input{e6}\end{ejercicio}
+	% \begin{solucion}\input{r6}\end{solucion}
+
+\end{document}

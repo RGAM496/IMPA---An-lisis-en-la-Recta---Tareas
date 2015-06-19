@@ -1,0 +1,108 @@
+%!TEX root = lista3.tex
+
+{
+	\newcommand{\ba}{\frac{f(b)-f(a)}{g(b)-g(a)}}
+	\newcommand{\ha}{\frac{f(a+h)-f(a)}{g(a+h)-g(a)}}
+
+	\hfill
+
+	\begin{enumerate}[a)]
+		
+		\item 
+
+			Dados $a,b\in\R$ tales que $a<b$, defínase $l(x) = f(x) + d g(x)$ de tal modo que $l(a)=l(b)$.
+			De ser así, $f(a) + d g(a) = f(b) + d g(b) \Rightarrow d = \frac{f(a)-f(b)}{g(b)-g(a)}$.
+
+			Por el teorema de Rolle, existe $c\in(a,b)$ tal que $l'(c) = 0$.
+			Esto es $f'(c) + d g'(c) = 0 \Rightarrow \frac{f'(c)}{g'(c)} = -d = \ba$.
+
+			Esto es equivalente a decir, dados $a\in\R$ y $h>0$, existe $\theta\in(0;1)$ tal que 
+			\begin{align} \label{eq:valormediogeneral}
+				\ha = \frac{f'(a+\theta h)}{g'(a+\theta h)} .
+			\end{align}
+
+			Sabiendo $\limite{x}{f(x)} = \limite{x}{g(x)} = 0$, obtenemos que 
+			\begin{align} \label{eq:limha}
+				\limite{h}{\ha} = \limite{h}{\frac{0-f(a)}{0-f(b)}} = \frac{f(a)}{f(b)} .
+			\end{align}
+
+			Por hipótesis, $\forall\varepsilon>0\ \exists A>0; x>A\Rightarrow f'(x)/g'(x) \in \openci{L}{\frac{\varepsilon}{2}}$.
+			Si $a>A$, de \eqref{eq:valormediogeneral} obtenemos 
+			$$ \left| \ha - L \right| < \frac{\varepsilon}{2}.$$
+
+			De \eqref{eq:limha} deducimos
+			$$ \forall\varepsilon>0\ \exists H>0; h>H \rightarrow \left| \ha - \frac{f(a)}{g(a)} \right| < \frac{\varepsilon}{2} .$$
+
+			Luego, con $a>A$ y $h>H$,
+			\begin{align*}
+				\left| \frac{f(a)}{g(a)} - L \right|
+					&= \left| \left(\frac{f(a)}{g(a)} - \ha \right) + \left(\ha - L \right) \right| \\
+					&\leq \left| \frac{f(a)}{g(a)} - \ha \right| + \left|\ha - L \right| \\
+					& < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon .
+			\end{align*}
+
+			Por tanto, $\limite{x}{\frac{f(x)}{g(x)} = L}$.
+
+		\item
+
+			Demostremos que para cualquier $\varepsilon>0$ existen $\varepsilon_1,\varepsilon_2>0$, con $\varepsilon_2<1$ tales que
+			\begin{align} \label{rel:chanta}
+				L-\varepsilon < \frac{L-\varepsilon_1}{1+\varepsilon_2} , && L+\varepsilon > \frac{L+\varepsilon_1}{1-\varepsilon_2} .
+			\end{align}
+			Resolviendo las desigualdades, obtenemos $\varepsilon_1+(L-\varepsilon)\varepsilon_2 < \varepsilon$ y $\varepsilon_1+(L+\varepsilon)\varepsilon_2 < \varepsilon$; y adicionándolas deducimos $\varepsilon_1+L\varepsilon_2 < \varepsilon$.
+			Si $\varepsilon_1=\varepsilon_2$ tenemos $(L+1)\varepsilon_1<\varepsilon$.
+			En ese caso, si $L+1\leq 0$, cualquier $\varepsilon_1<1$ es suficiente. En cambio, si $L+1>0$, necesitamos $\varepsilon_1<\min\set{1,\frac{\varepsilon}{L+1}}$.
+
+			Sean $x,h\in\R^+$. Luego, por \eqref{eq:valormediogeneral}, existe $\theta\in(0;1)$ tal que 
+			\begin{align*}
+				\frac{f(x+h)-f(x)}{g(x+h)-g(x)} = \frac{f'(x+\theta h)}{g'(x+\theta h)} .
+			\end{align*}
+			Obsérvese además que 
+			\begin{align*}
+				\frac{f(x+h)-f(x)}{g(x+h)-g(x)} = \frac{f(x)\left[\frac{f(x+h)}{f(x)}-1\right]}{g(x)\left[\frac{g(x+h)}{g(x)}-1\right]} .
+			\end{align*}
+
+			Para cualquier $\varepsilon>0$, existe $\varepsilon_1$ tal que se cumplan las dos desigualdades mencionadas en \eqref{rel:chanta}.
+			Además, existe $\delta_1$ tal que $0<x<\delta_1\Rightarrow f'(x)/g'(x)\in\openci{L}{\varepsilon_1}$.
+			Entonces, si tomamos $x,h\in\R+$ tales que $x+h<\delta_1$ deducimos que
+			\begin{align} \label{rel:cotaL}
+				L - \varepsilon_1 \leq
+				\frac{f(x+h)-f(x)}{g(x+h)-g(x)} = \frac{f'(x+\theta h)}{g'(x+\theta h)} = \frac{f(x)\left[\frac{f(x+h)}{f(x)}-1\right]}{g(x)\left[\frac{g(x+h)}{g(x)}-1\right]}
+				\leq L + \varepsilon_1 .
+			\end{align}
+
+			Fijando la $h$, además, podemos observar que
+			\begin{align*}
+				\limite{x}[0]{
+					\frac
+						{\frac{f(x+h)}{f(x)}-1}
+						{\frac{g(x+h)}{g(x)}-1}
+					}
+				= \frac{0-1}{0-1} = 1 .
+			\end{align*}
+			Esto es lo mismo que decir que, para $x$ suficientemente pequeña (digamos, $0<x<\delta_2$), 
+			\begin{align} \label{rel:cota1}
+				\frac
+					{\frac{f(x+h)}{f(x)}-1}
+					{\frac{g(x+h)}{g(x)}-1}
+				\in\openci{1}{\varepsilon_1} .
+			\end{align}
+
+			Combinando \eqref{rel:cotaL} y \eqref{rel:cota1} tenemos
+			\begin{align*}
+				L-\varepsilon_1 < \frac{f(x)}{g(x)} (1+\varepsilon_1) 
+				, &&
+				\frac{f(x)}{g(x)} (1-\varepsilon_2) < L+\varepsilon_1
+				.
+			\end{align*}
+
+			Inmediatamente deducimos que
+			\begin{align*}
+				L-\varepsilon < \frac{L-\varepsilon_1}{1+\varepsilon_1}
+				< \frac{f(x)}{g(x)} <
+				\frac{L+\varepsilon_1}{1-\varepsilon_1} < L+\varepsilon
+			\end{align*}
+			y concluimos que $\limite{x}[0]{\frac{f(x)}{g(x)}} = L$.
+
+	\end{enumerate}
+}

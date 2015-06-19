@@ -1,0 +1,114 @@
+%!TEX root = lista1.tex
+
+Definamos $|X| = \card(X)$.
+
+\begin{enumerate}[a)]
+
+	\item Demostremos por inducción.
+		Supongamos inicialmente $X=\set{x_1}, Y=\set{y_1}$. Luego, $|X| = |Y| = 1 \Rightarrow |X| + |Y| = 2$.
+		\begin{itemize}
+			\item Si $x_1 = y_1$, $X\cup Y = \set{x_1}$ y $X\cap Y = \set{x_1}$. Luego, $|X\cup Y| + |X\cap Y| = 1 + 1 = 2$.
+			\item Si $x_1 \neq y_1$, $X\cup Y = \set{x_1,y_1}$ y $X\cap Y = \emptyset$. Luego, $|X\cup Y| + |X\cap Y| = 2 + 0 = 2$.
+		\end{itemize}
+		Se verifica en ambos casos.
+
+		Si $X = \set{x_1,\ldots,x_n}$ e $Y = \set{y_1,\ldots,y_m}$, $|X|=n, |Y|=m$, y luego $|X| + |Y| = n + m$. Por hipótesis de inducción, asumamos $|X\cup Y| + |X\cap Y| = n + m$.
+		Sea $X' = X\cup \set{x_{n+1}},x_{n+1}\notin X$. Como $|X'| = n+1$, $|X'| + |Y| = n + m + 1$. Se dan los siguientes dos casos:
+		\begin{itemize}
+			\item Si $x_{n+1}\in Y$, $X'\cup Y = X \cup Y$ y $X'\cap Y = (X\cap Y) \cup \set{x_{n+1}}, x_{n+1}\notin X\cap Y$.
+				Luego, $|X'\cup Y| + |X'\cap Y| = |X\cup Y| + |X\cap Y| + 1 = n + m + 1$.
+			\item Si $x_{n+1}\notin Y$, $X'\cup Y = (X\cup Y) \cup \set{x_{n+1}}, x_{n+1}\notin X\cup Y$ y $X'\cap Y = X \cap Y$.
+				Luego, $|X'\cup Y| + |X'\cap Y| = |X\cup Y| + 1 + |X\cap Y| = n + m + 1$.
+		\end{itemize}
+		Nuevamente, ambos casos verifican y queda demostrada la inducción (no se pierde generalidad al agregar un elemento a $X$ en lugar de a $Y$).
+
+		\textbf{Observación:} Teniendo una biyección $f_n:I_n\to X$, es fácil construir una biyección $f_{n+1}:I_{n+1}\to X\cup\set{x_{n+1}}$ si $x_{n+1}\notin X$. Es por eso que añadiendo un elemento a un conjunto aumenta en 1 la cardinalidad.
+
+	\item Utilizando lo demostrado anteriormente, deducimos:
+		\begin{align}\label{eq:2_1}
+			|(X\cup Y)\cup Z| + |(X\cup Y)\cap Z|
+				&= |X\cup Y| + |Z| \notag \\
+				&= |X| + |Y| - |X\cap Y| + |Z|
+		\end{align}
+
+		\begin{align}\label{eq:2_2}
+			|(X\cup Y)\cap Z|
+				&= |(X\cap Z)\cup(Y\cap Z)| \notag \\
+				&= |X\cap Z| + |Y\cap Z| - |(X\cap Z)\cap(Y\cap Z)| \notag \\
+				&= |X\cap Z| + |Y\cap Z| - |X\cap Y\cap Z|
+		\end{align}
+		
+		De \eqref{eq:2_1} y \eqref{eq:2_2}:
+		\begin{align*}
+			|X| + |Y| + |Z|
+				&= |(X\cup Y)\cup Z| + |(X\cup Y)\cap Z| + |X\cap Y| \\
+				&= |X\cup Y\cup Z| + |X\cap Z| + |Y\cap Z| - |X\cap Y\cap Z| + |X\cap Y| \\
+				&= |X\cup Y\cup Z| + |X\cap Z| + |X\cap Y| + |Y\cap Z| - |X\cap Y\cap Z|
+		\end{align*}
+		Que también puede expresarse como:
+		$$|X\cup Y\cup Z| = |X| + |Y| + |Z| - |X\cap Z| - |X\cap Y| - |Y\cap Z| + |X\cap Y\cap Z|$$
+
+	\item La forma general es:
+	\begin{align*}
+		|X_1\cup\ldots\cup X_n|
+			&= \sum_{i=1}^{n} |X_i|
+			-\ \sum_{\mathclap{1\leq i<j\leq n}}\; |X_i\cap X_j|
+			+ \dots
+			+ (-1)^{n-1} |X_1\cap\ldots\cap X_n|
+		\\
+			&= \sum_{i=1}^n \left[
+				(-1)^{i-1}\ \sum_{\mathclap{1\leq n_1<\ldots<n_i\leq n}}\; |X_{n_1}\cap\ldots\cap X_{n_i}|
+				\right]
+	\end{align*}
+
+	Demostremos por inducción, asumiendo que se cumple la relación para $n$ conjuntos. Entonces:
+	\begin{align*}
+		\left|\bigcup_{i=1}^{n+1}{X_i}\right| %|X_1\cup\ldots\cup X_{n+1}|
+			&= |(X_1\cup\ldots\cup X_n)\cup X_{n+1}|
+		\\
+			&= |X_1\cup\ldots\cup X_n| + |X_{n+1}| - |(X_1\cup\ldots\cup X_n)\cap X_{n+1}|
+		\\
+			&= |X_1\cup\ldots\cup X_n| + |X_{n+1}| - |(X_1\cap X_{n+1})\cup\ldots\cup(X_n\cap X_{n+1})|
+		\\	&\begin{multlined}
+			= \sum_{i=1}^n \left[
+				(-1)^{i-1}\ \sum_{{1\leq n_1<\ldots<n_i\leq n}}{\left|\bigcap_{j=1}^{i}{X_{n_j}}\right|}
+				\right]
+			+ |X_{n+1}|
+		\\
+			- \sum_{i=1}^n \left[
+				(-1)^{i-1}\ \sum_{{1\leq n_1<\ldots<n_i\leq n}}{\left|\bigcap_{j=1}^{i}{(X_{n_j}\cap X_{n+1})}\right|}
+				\right]
+			\end{multlined}
+		\\	&\begin{multlined}
+			= \sum_{i=1}^n \left[
+				(-1)^{i-1}\ \sum_{{1\leq n_1<\ldots<n_i\leq n}}{\left|\bigcap_{j=1}^{i}{X_{n_j}}\right|}
+				\right]
+			+ |X_{n+1}|
+		\\
+			- \sum_{i=1}^n \left[
+				(-1)^{i-1}\ \sum_{\mathclap{1\leq n_1<\ldots<n_i\leq n}}\; |X_{n_1}\cap\ldots\cap X_{n_i}\cap X_{n+1}|
+				\right]
+			\end{multlined}
+		\\	&\begin{multlined}
+			= \sum_{i=1}^n \left[
+				(-1)^{i-1}\ \sum_{{1\leq n_1<\ldots<n_i\leq n}}{\left|\bigcap_{j=1}^{i}{X_{n_j}}\right|}
+				\right]
+			+ |X_{n+1}|
+		\\
+			+ \sum_{i=2}^{n+1} \left[
+				(-1)^{i-1}\ \sum_{\mathclap{1\leq n_1<\ldots<n_{i-1}\leq n}}\; |X_{n_1}\cap\ldots\cap X_{n_{i-1}}\cap X_{n+1}|
+				\right]
+			\end{multlined}
+		\\
+			&= \sum_{i=1}^{n+1} |X_i|
+			+ \sum_{i=2}^n \left[
+				(-1)^{i-1}\ \sum_{\mathclap{1\leq n_1<\ldots<n_i\leq n+1}}\; |X_{n_1}\cap\ldots\cap X_{n_i}|
+				\right]
+			+ (-1)^n \left|\bigcap_{i=1}^{n+1}{X_i}\right|
+		\\
+			&= \sum_{i=1}^{n+1} \left[
+				(-1)^{i-1}\ \sum_{\mathclap{1\leq n_1<\ldots<n_i\leq n+1}}\; |X_{n_1}\cap\ldots\cap X_{n_i}|
+				\right]
+	\end{align*}
+
+\end{enumerate}

@@ -1,0 +1,35 @@
+%!TEX root = lista2.tex
+
+\hfill
+
+\begin{enumerate}[a)]
+	
+	\item
+		Por la definición,
+		$$\limite{n}{a_n}=L \implies \forall\varepsilon>0\ \exists n_0\in\N; n>n_0\Rightarrow |a_n-L|<\varepsilon .$$
+		Como $\Z=\cierre{\Z}$, $L\in\Z$ y $|a_n-L|\in\Z$ por ser una resta de enteros.
+		Luego, si $\varepsilon\leq 1$, $\exists n_0\in\N; n>n_0\Rightarrow |a_n-L|<1 \implies |a_n-L| = 0 \implies a_n=L\ \forall n\geq n_0+1$.
+	
+	\item
+		Sea $A = \set{(a_n)_{n\in\N}|a_n\in\Z\ \forall n\in\N \text{ y } \limite{n}{a_n}=0}$.
+
+		$\forall (a_n)\in A\ \exists n_a\in\N; n\geq n_a+1 \Rightarrow a_n=0$.
+		Entonces, $\sum_{n=1}^{\infty}{a_n} = \sum_{n=1}^{n_a}{a_n}$ converge.
+		Para cada sucesión $(a_n)$, podemos considerar sus primeros $n_a$ términos.
+
+		Sea $p_n$ el $n$-ésimo número primo positivo. Luego, podemos definir $f:A\to\N$ y $g:\N\times\N\to\N$ del siguiente modo:
+		\begin{align*}
+			g(a,i) &= \left\{
+				\begin{aligned}
+					p_{2n-1} &\text{ si } a \geq 0 \\
+					p_{2n} &\text{ si } a < 0
+				\end{aligned}
+				\right.
+			\\
+			f\big((a_n)\big) &= \prod_{i=1}^{\infty}{g(a_i,i)}
+		\end{align*}
+
+		Si $a_n = 0\ \forall n > n_a$, es evidente que $f\big((a_n)\big) = \prod_{i=1}^{n_a}{g(a_i,i)}$.
+		Luego, $f\big((a_n)\big) = f\big((b_n)\big) \Leftrightarrow g(a_i,i) = g(b_i,i) \forall i\in\N \Rightarrow a_i = b_i \forall i\in\N$ por el teorema de la factorización única, lo cual concluye que $f$ es inyectiva y, por tanto, $A$ es numerable.
+
+\end{enumerate}

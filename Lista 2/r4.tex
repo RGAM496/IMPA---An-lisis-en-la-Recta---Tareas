@@ -1,0 +1,23 @@
+%!TEX root = lista2.tex
+
+{
+	\newcommand{\F}{\bigcup_{n\in\N}{F_n}}
+	\newcommand{\I}{\bigcap_{n\in\N}{I_n}}
+	\newcommand{\openci}[2]{\left(#1-#2,#1+#2\right)}
+
+	Primero, demostraremos que, si $C$ es un conjunto cerrado con interior vacío y $A$ cualquier conjunto abierto, entonces existe un intervalo abierto $I\in A$ tal que $I\cap C = \emptyset$.
+
+	Supongamos, por absurdo, que todo intervalo abierto $I\in A$ tiene al menos un punto en $C$. Como $A$ es abierto, $c\in A \Rightarrow \exists \varepsilon_c > 0; \openci{c}{\varepsilon_c} \subset A$.
+	Como $\interior(C) = \emptyset$, no existe un intervalo abierto completamente contenido en $C$ (sino, todo punto en el interior del invervalo sería un punto en el interior de $C$).
+	Entonces, $\exists a\in \openci{c}{\varepsilon_c}-C$.
+	Sea $\varepsilon$ tal que $\openci{a}{\varepsilon}\subset\openci{c}{\varepsilon_c}$.
+	Ahora, construimos la sucesión $(a_n)$ tal que $a_n\in \openci{a}{\varepsilon/n}\cap C$.
+	Inmediatamente, $\limite{n}{a_n} = a$, pero como $C$ es cerrado y $a_n\in C\ \forall n\in\N$, se llega a la contradicción de que $a\in C$.
+	Así concluimos que $A$ tiene al menos un intervalo abierto sin puntos en común con $C$.
+
+	Sabemos ahora que $A$ contiene un intervalo abierto $I_1$ tal que $I_1\cap F_1 = \emptyset$.
+	Inductivamente, $I_n$ contiene un intervalo abierto $I_{n+1}$ tal que $I_{n+1}\cap F_{n+1} = \emptyset$ para toda $n\in\N$.
+	Luego, $\I\cap\F=\emptyset$. Como $\I\neq\emptyset$, $\exists c\in\I$ y $c\notin\F$.
+
+	Obtenemos así que cualquier conjunto abierto $A$ tiene al menos un punto no perteneciente a $\F$, por tanto, para $x\in\F$, $\nexists\varepsilon; \openci{x}{\varepsilon}\subset\F$, lo cual concluye que $\interior\left(\F\right) = \emptyset$.
+}

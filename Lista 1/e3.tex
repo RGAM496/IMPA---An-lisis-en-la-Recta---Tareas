@@ -1,0 +1,8 @@
+%!TEX root = lista1.tex
+
+La desigualdad entre la media aritmética y la geométrica vale para $n$ números reales positivos $x_1,\ldots,x_n$.
+Sean $G = \sqrt[n]{x_1x_2\ldots x_n}$ y $A = \frac{x_1+x_2+\ldots+x_n}{n}$. Se tiene $G\leq A$. Esto es evidente cuando $x_1 = x_2 = \ldots x_n$.
+Para probar el caso general, considere la operación que consiste en sustituir el menor de los números dados, digamos $x_i$, y el mayor de ellos, digamos $x_j$, respectivamente por $x'_i = \frac{x_i\cdot x_j}{G}$ y $x'_j = G$.
+Esto no altera la media geométrica y no aumenta la media aritmética, pues, como fácilmente se ve, $x'_i+x'_j \leq x_i+x_j$.
+Pruebe que, repetida esta operación un máximo de $n$ veces, obtenemos $n$ números todos iguales a $G$ y, por tanto, su media aritmética es $G$.
+Como en cada operación no aumentó la media aritmética, concluya que $G\leq A$, o sea $\sqrt[n]{x_1x_2\ldots x_n} \leq \frac{x_1+x_2+\ldots+x_n}{n}$.

@@ -1,0 +1,33 @@
+%!TEX root = lista3.tex
+
+{
+	\hfill
+
+	\begin{enumerate}[a)]
+		
+		\item 
+
+			Sea $ s_n = \sup{x_k,k\geq n} $.
+
+			Si $x_n \geq x_{n+r}\ \forall r\in\N$, entonces $s_n = x_n \geq s_{n+1}$.
+			En cambio, si $\exists r\in\N; x_n < x_{n+r}$, entonces $s_n=s_{n+1}$.
+			En general, $s_n\geq s_{n+1}$.
+			Luego, $(s_n)$ es una secuencia (no estrictamente) decreciente y acotada, por tanto converge y $\exists \limite{n}{s_n}$.
+
+		\item
+
+			Sea $s = \limite{n}{s_n}$.
+			Como $s_n = \sup{x_k,k\geq n}$, existe una subsecuencia $(x_{n_k})$ tal que $s_n = \limite{n_k}{x_{n_k}}$, o bien, $\forall\varepsilon>0\ \exists N\in\N; n_k>N\Rightarrow |x_{n_k}-s_n|<\varepsilon$.
+
+			Entonces, sean $n_1<n_2<\ldots\in\N$ tales que $|x_{n_i}-s_i|<\frac{\varepsilon}{2i}\forall i\in\N$.
+			Además, para $i$ suficientemente grande, $|s_i-s|<\frac{\varepsilon}{2}$.
+			Luego, $|x_{n_i}-s| \leq |x_{n_i}-s_i| + |s_i-s| < \frac{\varepsilon}{2i} + \frac{\varepsilon}{2} \leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon \Rightarrow \limite{n_i}{x_{n_i}} = s$.
+			Esto significa que $s$ es un valor de adherencia de $(x_n)$.
+
+			Sea $x = \limite{n_k}{x_{n_k}}$ un valor de adherencia de $(x_n)$.
+			Luego, $x_{n_k} \leq s_{n_k} \forall {n_k}$.
+			Como $(s_{n_k})$ es una subsecuencia de $(s_n)$, $\limite{n_k}{s_{n_k}} = \limite{n}{s_{n}} = s$.
+			Inmediatamente, $x = \limite{n_k}{x_{n_k}} \leq \limite{n_k}{s_{n_k}} = s$, lo cual demuestra que $s$ es el mayor valor de adherencia de $(x_n)$.
+
+	\end{enumerate}
+}

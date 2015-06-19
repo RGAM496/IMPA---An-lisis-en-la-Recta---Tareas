@@ -1,0 +1,64 @@
+%!TEX root = lista2.tex
+
+{
+	\newcommand{\openci}[2]{\left(#1-#2,#1+#2\right)}
+	\newcommand{\li}[1]{\mathcal{I}_{#1}}
+	\newcommand{\ls}[1]{\mathcal{S}_{#1}}
+
+	\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+	Sea $g:[0;\pinf)\to\R$ definida como $g(x)=f(x+1)-f(x)$.
+	Luego, $\limite{x}{g(x)} = \limite{x}{\left[f(x+1)-f(x)\right]} = L$.
+	Por definición, $\forall\varepsilon>0\ \exists A>0; x>A\Rightarrow g(x)\in\openci{L}{\varepsilon}$.
+
+	Sea $x>A$. Existe $r\in(0;1]$ tal que $x-A-r\in\Z$. Luego,
+	\begin{align*}
+		\frac{f(x)}{x}
+		&= \frac{\sum_{y=A+r}^{x-1}\left[f(y+1)-f(y)\right]+f(A+r)}{x}
+		\\
+		&= \frac{\sum_{y=A+r}^{x-1}g(y)+f(A+r)}{x}
+	\end{align*}
+
+	De $L-\varepsilon<g(y)<L+\varepsilon\ \forall y>A$ se deduce
+	$$ (x-A-r)(L-\varepsilon) < \sum_{y=A+r}^{x-1}g(y) < (x-A-r)(L+\varepsilon) .$$
+
+	Luego,
+	\begin{align} \label{ineq:entorno}
+		\frac{(x-A-r)(L-\varepsilon)-f(A+r)}{x} < &\frac{f(x)}{x} < \frac{(x-A-r)(L+\varepsilon)-f(A+r)}{x} \notag
+		\\
+		\frac{(x-A-r)}{x}\cdot(L-\varepsilon)-\frac{f(A+r)}{x} < &\frac{f(x)}{x} < \frac{(x-A-r)}{x}\cdot(L+\varepsilon)-\frac{f(A+r)}{x}
+	\end{align}
+	para cualquier $x>A$.
+
+	$f$ es una función acotada en cada invervalo acotado.
+	Entonces, también lo es $f(x)/x$.
+	Por tanto, para todo $a\in\R$, existen $\li{a}:=\limiteinferior{x}[a]{\frac{f(x)}{x}}$ y $\ls{a}:=\limitesuperior{x}[a]{\frac{f(x)}{x}}$
+
+	Volviendo a la desigualdad \eqref{ineq:entorno}, sea $(x_n)$ una secuencia de números en $(A,\pinf)$ tal que $\limite{n}{x_n}=\pinf$ $\limite{n}{\frac{f(x_n)}{x_n}}=\li{\pinf}$.
+	Luego,
+	\begin{align*} \label{ineq:li}
+		\frac{f(x_n)}{x_n}
+			&> \frac{(x_n-A-r)}{x_n}\cdot(L-\varepsilon)-\frac{f(A+r)}{x_n}
+			\ \forall n\in\N
+		\\
+		\limite{n}{\frac{f(x_n)}{x_n}}
+			&\geq \limite{n}{\left[\frac{(x_n-A-r)}{x_n}\cdot(L-\varepsilon)-\frac{f(A+r)}{x_n}\right]}
+		\\
+		\li{\pinf}
+			&\geq \limite{n}{\frac{(x_n-A-r)}{x_n}}\cdot\limite{n}{(L-\varepsilon)}-\limite{n}{\frac{f(A+r)}{x_n}}
+		\\
+		\li{\pinf}
+			&\geq L-\varepsilon .\numberthis
+	\end{align*}
+
+	Análogamente, tomando otra secuencia $(x_n)$ de números en $(A,\pinf)$ tal que $\limite{n}{x_n}=\pinf$ $\limite{n}{\frac{f(x_n)}{x_n}}=\ls{\pinf}$ obtenemos
+	\begin{align*} \label{ineq:ls}
+		\ls{\pinf}
+			&\leq L+\varepsilon .\numberthis
+	\end{align*}
+
+	De \eqref{ineq:li} y \eqref{ineq:ls} deducimos
+	$ L-\varepsilon \leq \li{\pinf} \leq \ls{\pinf} \leq L+\varepsilon \ \forall\varepsilon>0 $.
+	Luego, $$ L \leq \li{\pinf} \leq \ls{\pinf} \leq L \Rightarrow \li{\pinf} = \ls{\pinf} = L \Rightarrow \limite{x}{\frac{f(x)}{x}} = L .$$
+}
